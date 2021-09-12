@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.core.libraries.logging.EnableLogging;
 import com.micro.ex.userservice.model.UserRequest;
 import com.micro.ex.userservice.service.UserService;
 
@@ -24,6 +25,7 @@ public class UserController {
 		return "working";
 	}
 	
+	@EnableLogging
 	@PostMapping
 	public String createNewUser(@Valid @RequestBody UserRequest userDetails) {
 		

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.core.libraries.exceptionhandler.CustomException;
 import com.micro.ex.userservice.entity.User;
 import com.micro.ex.userservice.model.UserRequest;
 import com.micro.ex.userservice.repository.UserRepository;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserRequest createUser(UserRequest userDetails) {
 		User user = new User();
+		if(userRepository.findByUserId(userDetails.getEmail()) != null){
+			throw new CustomException(503, "User id already exists");
+		}
 		user.setUserId(userDetails.getEmail());
 		user.setEmailId(userDetails.getEmail());
 		user.setFirstName(userDetails.getFirstName());

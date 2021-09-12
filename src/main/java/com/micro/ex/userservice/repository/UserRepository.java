@@ -8,4 +8,7 @@ import com.micro.ex.userservice.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
+	public User findByUserId(String email);
+
+
 }
