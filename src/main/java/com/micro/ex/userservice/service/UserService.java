@@ -4,5 +4,5 @@ import com.micro.ex.userservice.model.UserRequest;
 
 public interface UserService {
 
-	public void createUser(UserRequest userDetails);
+	public UserRequest createUser(UserRequest userDetails);
 }
